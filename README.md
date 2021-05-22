@@ -71,7 +71,7 @@ You need jQuery for using 'fract-jquery.js'. Import jQuery and fract-jquery.js a
 'fract-jquery.js' exports a 'Fract' object which contains functions fract.js exports. You can use the functions like below:
 
 ```html
-<script type="javascript">
+<script type="text/javascript">
   // call Fract.send for accessing to a server-side handler.
   // The response from server-side is handled automatically.
   Fract.send('http://example.com/your_great_handler');
