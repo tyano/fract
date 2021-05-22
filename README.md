@@ -14,7 +14,7 @@ Your client-side task are only putting 'data-fract-id' on elements you want upda
 Your server-side handler must return a well-formed response like:
 
 ```json
-{components: {flash-message: "<p data-fract-id='flash'>An error occurred!!</p>"}}
+{"components": {"flash-message": "<p data-fract-id='flash'>An error occurred!!</p>"}}
 ```
 
 fract.js will find elements which have same data-fract-id with keys of the 'components' object of the response, and replace them with the HTML string of the 'components' object. It's simple.
@@ -140,18 +140,18 @@ NODE: It is recommended that <form> element have the 'enctype="multipart/form-da
 The task you need to do at Server side is only make a response of JSON data formatted as following:
 
 ```json
-{"preAction": string,
- "components": {fract-id: {"method": "'replace', 'prepend' or 'append'",
-                           "preAction": string,
-                           "fractions": [string, string, string....],
-                           "postAction": string}},
- "postAction": string}
+{"preAction": "string",
+ "components": {"fract-id": {"method": "'replace', 'prepend' or 'append'",
+                             "preAction": "string",
+                             "fractions": ["string", "string", "string"],
+                             "postAction": "string"}},
+ "postAction": "string"}
 ```
 
 But most of the keys of the JSON is optional. preAction and postAction are optional. The 'fractions' vector can be a string if the number of elements of the vector is one, and the 'fractions' key is optional if the 'preAction' and 'postAction' don't exist. Most miminum resopnse is like:
 
 ```json
-{"components": {fract-id: string}}
+{"components": {"fract-id": "string"}}
 ```
 
 'fract-id' is a string that matches 'data-fract-id' in HTML. You can update multiple fract-ids at one reponse.
@@ -169,20 +169,20 @@ preAction at 'fractions' level will be executed before starting updating-process
 
 #### components
 
-'components' is a object of the keys of fraction-id and the values of updating info.
+**'components'** is a object of the keys of fraction-id and the values of updating info.
 
-fraction-id must be matched with the 'data-fraction-id' attribute of any elements in HTML. If matched elements are found, updating process of the fraction-id will be started. No elements found, no process will be started for the fraction-id.
+**fraction-id** must be matched with the 'data-fraction-id' attribute of any elements in HTML. If matched elements are found, updating process of the fraction-id will be started. No elements found, no process will be started for the fraction-id.
 
-update-info is a object with keys of 'method', 'preAction', 'fractions' and 'postAction'.
+**update-info** is a object with keys of 'method', 'preAction', 'fractions' and 'postAction'.
 It is already described about 'preAction' and 'postAction'.
 
-'method' is the way to update a element. It is optional and the default is 'replace'.
+**'method'** is the way to update a element. It is optional and the default is 'replace'.
 
-'replace': A matched elements will be replaced by the HTML in 'fractions'. the 'fractions' must be only one item. If the 'fractions' is a vector and holds more than one item, An error will occur at client side and never be updated.
+**'replace'**: A matched elements will be replaced by the HTML in 'fractions'. the 'fractions' must be only one item. If the 'fractions' is a vector and holds more than one item, An error will occur at client side and never be updated.
 
-'prepend': All items in 'fractions' vector will be prepended before the element matched with fraction-id. The first item will be prepended before the element, second will be prepended before the first.
+**'prepend'**: All items in 'fractions' vector will be prepended before the element matched with fraction-id. The first item will be prepended before the element, second will be prepended before the first.
 
-'append': All items in 'fractions' vector will be appended after the element matched with fraction-id. The first item will be appended after the element, second will be appended after the first.
+**'append'**: All items in 'fractions' vector will be appended after the element matched with fraction-id. The first item will be appended after the element, second will be appended after the first.
 
 'preaction', 'postAction' and 'method' all are optional. If all of them don't exits and only 'fractions' key exists, you can remove the object for a fraction-id and directly write a fraction vector.
 
