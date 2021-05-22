@@ -132,7 +132,7 @@ sendForm(form);
 'sendForm' will handle automatically the response and update DOM by the response data.
 the first arg is a form element and the second is a option object (optional) of the 'fetch' function of Fetch API (or a settings object of the 'ajax' function of jQuery for fract-jquery.js).
 
-NODE: It is recommended that <form> element have the 'enctype="multipart/form-data"' attribute on fract-jquery.js.
+NODE: It is recommended that &lt;form&gt; element have the 'enctype="multipart/form-data"' attribute on fract-jquery.js.
 
 
 ### Server Side
