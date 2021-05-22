@@ -189,7 +189,7 @@ It is already described about 'preAction' and 'postAction'.
 The vector for 'fractions' key can be a string if the vector contains only one item.
 
 
-#### preAction
+#### postAction
 
 postAction is a javascript string which will be executed after updating DOM. It is optional.
 
