@@ -28,7 +28,7 @@ JavascriptによるSingle Page Application(SPA)は日に日にポピュラーと
 サーバー側のプログラムに集中しつつ、なおかつ、特定の形のJSONレスポンスをサーバーから返すだけで、簡単に、動的にクライアント側のDOMを更新することができます。
 
 
-##　なぜJSファイルが２つあるのか
+## なぜJSファイルが２つあるのか
 
 このプロジェクトの中心となるスクリプトは、`fract.js`の方です。このスクリプトは、`let`や`const`, Fetch APIといった、新しいECMAScriptの言語機能を利用しているため、モダンなウェブ・ブラウザでのみ動作します。
 
@@ -196,7 +196,7 @@ preActionは、DOMを更新する前に実行されるJavascriptコードです�
 
 `componentPath`にマッチする要素が見つかった場合は、その`componentPath`に対する更新プロセスが開始されます。要素が見つからなかった場合は、何も実行されません。
 
-**update-info** はキーとして `method`, `preAction`, `fractions` 及び `postAction` を持つオブジェクトです。
+**更新情報** はキーとして `method`, `preAction`, `fractions` 及び `postAction` を持つオブジェクトです。
 `preAction` と `postAction` については別項で説明しています。
 
 **method** は、要素を更新する方法を指定するキーです。省略可能であり、デフォルトは `replace` です。指定できるキーは以下の３つです。
