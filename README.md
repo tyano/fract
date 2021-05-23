@@ -141,20 +141,44 @@ The task you need to do at Server side is only make a response of JSON data form
 
 ```json
 {"preAction": "string",
- "components": {"fract-id": {"method": "'replace', 'prepend' or 'append'",
-                             "preAction": "string",
-                             "fractions": ["string", "string", "string"],
-                             "postAction": "string"}},
+ "components": {"componentPath": {"method": "'replace', 'prepend' or 'append'",
+                                  "preAction": "string",
+                                  "fractions": ["string", "string", "string"],
+                                  "postAction": "string"}},
  "postAction": "string"}
 ```
 
 But most of the keys of the JSON is optional. preAction and postAction are optional. The 'fractions' vector can be a string if the number of elements of the vector is one, and the 'fractions' key is optional if the 'preAction' and 'postAction' don't exist. Most miminum resopnse is like:
 
 ```json
-{"components": {"fract-id": "string"}}
+{"components": {"componentPath": "string"}}
 ```
 
-'fract-id' is a string that matches 'data-fract-id' in HTML. You can update multiple fract-ids at one reponse.
+#### componentPath
+
+'componentPath' is a string called as fractId that matches a 'data-fract-id' attribute in HTML or a string joined of them by ':' (ex: 'parent-table:childItem1'). You can update multiple componentPaths at one reponse.
+
+You can use the joined componentPath for matching a nested element when you can not choose only one element by a simple fractId.
+For example:
+
+```html
+<div data-fract-id="table">
+    <div data-fract-id="item">
+        <span data-fract-id="userName"></span>
+    </div>
+</div>
+<div data-fract-id="userName"></div>
+```
+
+For above HTML, a simple componentPath 'userName' matches 2 elements (a 'userName' element nested in table and a top-level element). If you want choose the nested 'userName' element, you can use
+
+* "table:item:userName"
+
+or
+
+* "table:userName"
+
+The joined componentPath will be converted to a css expression like '*[data-fract-id="table"] *[data-fract-id="userName"]', so that You can ommit a 'item' element at middle of them for matching the nested 'userName' element.
 
 
 #### preAction
@@ -165,7 +189,7 @@ If you return false, updating process will be aborted and updating DOM and runni
 
 You can supply 'postAction' script at 'components' level and 'fractions' level.
 preAction at 'components' level will be executed before starting updating-process from the 'components' key and can abort all 'components' updating by returning false.
-preAction at 'fractions' level will be executed before starting updating-process from the 'fractions' key and can abort all 'fractions' updating by returning false, but the aborting never affect to other fract-id's fractions.
+preAction at 'fractions' level will be executed before starting updating-process from the 'fractions' key and can abort all 'fractions' updating by returning false, but the aborting never affect to other componentPath's update.
 
 #### components
 
