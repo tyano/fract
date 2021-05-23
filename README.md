@@ -205,6 +205,8 @@ It is already described about `preAction` and `postAction`.
 
 **append**: All items in `fractions` vector will be appended after the element matched with fraction-id. The first item will be appended after the element, second will be appended after the first.
 
+**fractions** is a vector of HTML string that will be used for replacing a client-side element.
+
 `preaction`, `postAction` and `method` all are optional. If all of them don't exists and only `fractions` key exists, you can remove the object for a `componentPath` and directly write a fraction vector.
 
 The vector for `fractions` key can be a string if the vector contains only one item.

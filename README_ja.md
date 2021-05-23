@@ -207,6 +207,8 @@ preActionは、DOMを更新する前に実行されるJavascriptコードです�
 
 **append**: `fractions`の中の全項目が、`componentPath`にマッチした要素のあとに追加されます。まず最初の項目がマッチした要素のあとに追加され、次の項目が最初の項目のあとに追加されます。
 
+**fractions** は、HTML文字列の配列です。クライアント側のDOM要素が、このHTMLで置き換えられます。
+
 `preAction`と`postAction`、`method`は省略可能です。これらがすべて省略され、`fractions`キーだけが残った場合は、`componentPath`キーの値としてのオブジェクトも省略し、`componentPath`に対して直接、`fractions`の配列を指定することができます。
 
 さらに、`fractions`キーへの配列の項目数が１つの場合は、配列を省略し、文字列を直接指定することができます。
