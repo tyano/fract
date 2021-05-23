@@ -154,10 +154,6 @@ But most of the keys of the JSON is optional. preAction and postAction are optio
 {"components": {"componentPath": "string"}}
 ```
 
-#### componentPath
-
-
-
 #### preAction
 
 preAction is a javascript string which will be executed befor updating DOM. It is optional.
