@@ -1,7 +1,7 @@
 /*
  * fract.js
  *
- * version 1.0.2
+ * version 1.0.3
  *
  * A small javascript library for replacting/updating fractions of a page dynamically from server-side responses.
  *
@@ -180,6 +180,7 @@ export function send(url, fetchOpts) {
             });
         } else {
             console.error("An error response is returned:", response);
+            throw new Error("" + response.status + " " + response.statusText);
         }
         return response;
     }, reason => {

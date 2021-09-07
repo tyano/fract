@@ -1,7 +1,7 @@
 /*
  * fract-jquery.js
  *
- * version 1.0.2
+ * version 1.0.3
  *
  * A small javascript library for replacting/updating fractions of a page dynamically from server-side responses.
  *
@@ -169,6 +169,8 @@ var Fract = (function($) {
             } catch(e) {
                 console.error(e);
             }
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error("error = ", jqXHR, textStatus, errorThrown);
         });
     }
 
