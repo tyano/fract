@@ -1,7 +1,7 @@
 /*
  * fract.js
  *
- * version 1.0.1
+ * version 1.0.2
  *
  * A small javascript library for replacting/updating fractions of a page dynamically from server-side responses.
  *
@@ -188,9 +188,16 @@ export function send(url, fetchOpts) {
     });
 }
 
-export function sendForm(formElement, fetchOpts) {
+export function sendForm(formElement, submitter, fetchOpts) {
     if(formElement) {
         const formData = new FormData(formElement);
+
+        if(submitter && submitter.tagName.toLowerCase() == 'input') {
+            const name = submitter.getAttribute("name");
+            const value = submitter.value;
+            formData.append(name, value);
+        }
+
         const url = formElement.attributes.action.value;
         const method = formElement.attributes.method.value;
         if(fetchOpts == null) {
